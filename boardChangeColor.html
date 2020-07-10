@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+<style>
+    p {
+        height: 50px;
+        width: 50px;
+        background-color: aqua;
+        display: inline-block;
+        padding-top: 0%;
+    }
+    
+    div {
+        padding-top: 0%;
+        margin: auto;
+    }
+</style>
+
+<body>
+    <div>
+        <p class="1"></p>
+        <p class="1"></p>
+        <p class="1"></p>
+        <p class="1"></p>
+    </div>
+    <div>
+        <p class="2"></p>
+        <p class="2"></p>
+        <p class="2"></p>
+        <p class="2"></p>
+    </div>
+    <div>
+        <p class="3"></p>
+        <p class="3"></p>
+        <p class="3"></p>
+        <p class="3"></p>
+    </div>
+    <div>
+        <p class="4"></p>
+        <p class="4"></p>
+        <p class="4"></p>
+        <p class="4"></p>
+    </div>
+
+
+    <script>
+        let boardp1 = document.getElementsByClassName("1");
+        let boardp2 = document.getElementsByClassName("2");
+        let boardp3 = document.getElementsByClassName("3");
+        let boardp4 = document.getElementsByClassName("4");
+        let flag = false;
+        let counterPink = 0;
+
+        addingEvents(boardp1);
+        addingEvents(boardp2);
+        addingEvents(boardp3);
+        addingEvents(boardp4);
+
+
+        function addingEvents(board) {
+            for (let index = 0; index < boardp1.length; index++) {
+                board[index].addEventListener("mouseover", () => {
+                    counterPink++;
+                    if (counterPink == 1) {
+                        black(board);
+                        counterPink = 0;
+                    }
+                    board[index].style.background = "pink";
+                    line(board)
+                })
+            }
+        }
+
+        function line(board) {
+            for (let index = 0; index < board.length; index++) {
+                if (board[index].style.background != "pink") {
+                    board[index].style.background = "black"
+                }
+            }
+        }
+
+        function black(board) {
+            for (let index = 0; index < board.length; index++) {
+                board[index].style.background = "black"
+            }
+        }
+
+
+        window.addEventListener("click", () => {
+            for (let index = 0; index < boardp1.length; index++) {
+                boardp1[index].style.background = "aqua";
+                boardp2[index].style.background = "aqua";
+                boardp3[index].style.background = "aqua";
+                boardp4[index].style.background = "aqua";
+            }
+        })
+    </script>
+</body>
+
+</html>
